@@ -10,7 +10,7 @@ class Solution {
   public:
     long long sumOfSeries(long long N) {
         // code here
-       long long ans = (N * N * (N + 1) * (N + 1)) / 4;
+       long long ans = ( N * (N + 1)/2) * (N* (N + 1) / 2);
         return ans;
     }
 };
