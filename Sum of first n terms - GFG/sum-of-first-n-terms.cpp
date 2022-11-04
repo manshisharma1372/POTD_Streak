@@ -10,12 +10,8 @@ class Solution {
   public:
     long long sumOfSeries(long long N) {
         // code here
-       long long x;
-    if (N % 2 == 0)
-        x = (N / 2) * (N + 1);
-    else
-        x = ((N + 1) / 2) * N;
-    return x * x;
+       long long ans = (N * N * (N + 1) * (N + 1)) / 4;
+        return ans;
     }
 };
 
