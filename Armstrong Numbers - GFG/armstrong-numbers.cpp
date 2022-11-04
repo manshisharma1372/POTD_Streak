@@ -9,7 +9,7 @@ class Solution {
   public:
     string armstrongNumber(int n){
         // code here
-     int a,sum=0,temp=n;
+     int d,sum=0,temp=n;
 
         // code here
 
@@ -17,9 +17,9 @@ class Solution {
 
         {
 
-             a=n%10;
+             d=n%10;
 
-            sum+=(a*a*a);
+            sum+=(d*d*d);
 
             n=n/10;
 
