@@ -14,7 +14,7 @@ public:
         // code here
         
      
-       
+      /* 
        int i = 1;
   for (int j = 1; j < n; j++) {
     if (a[j] != a[i-1]) {
@@ -24,6 +24,15 @@ public:
     }
   }
   return i;
+  */
+  int i = 0;
+  for (int j = 1; j < n; j++) {
+    if (a[i] != a[j]) {
+      i++;
+      a[i] = a[j];
+    }
+  }
+  return i + 1;
     }
 };
 
