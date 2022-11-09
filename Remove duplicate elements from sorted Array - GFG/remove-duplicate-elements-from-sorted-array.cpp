@@ -15,14 +15,15 @@ public:
         
      
        
-       int i = 0;
+       int i = 1;
   for (int j = 1; j < n; j++) {
-    if (a[i] != a[j]) {
-      i++;
+    if (a[j] != a[i-1]) {
+     
       a[i] = a[j];
+       i++;
     }
   }
-  return i+1;
+  return i;
     }
 };
 
