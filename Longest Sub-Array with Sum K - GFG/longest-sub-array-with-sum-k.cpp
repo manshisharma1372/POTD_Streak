@@ -10,16 +10,16 @@ class Solution{
     { 
         // Complete the function
         unordered_map<int,int> m;
-        int maxlen=0,sum=0;
+        int maxlen=0,psum=0;
         m[0]=-1;
         
         for(int i=0;i<n;i++){
-            sum+=arr[i];
-            if(m.find(sum-k) != m.end()){
-                maxlen=max(maxlen,i-m[sum-k]);
+            psum+=arr[i];
+            if(m.find(psum-k) != m.end()){
+                maxlen=max(maxlen,i-m[psum-k]);
             }
-            if(m.find(sum)==m.end()){
-                m[sum]=i;
+            if(m.find(psum)==m.end()){
+                m[psum]=i;
             }
         }
         return maxlen;
