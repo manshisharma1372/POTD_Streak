@@ -8,7 +8,7 @@ public:
         
         
         //@method 2 counting method
-        
+       /* 
         int count_zero=0;
         int count_ones=0;
         int count_two=0;
@@ -35,6 +35,44 @@ public:
         }
          for(int i=count_zero+count_ones;i<count_zero+count_ones+count_two;i++){
             nums[i]=2;
+        }
+        
+        */
+        
+        
+        
+        //@method 3
+        
+        int count_zero=0;
+        int count_ones=0;
+        int count_two=0;
+        
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==0){
+                count_zero++;
+            }
+            
+            else if(nums[i]==1){
+                count_ones++;
+            }
+            else if(nums[i]==2){
+                count_two++;
+            }
+            
+        }
+        
+        int i=0;
+        while(count_zero--){
+            nums[i]=0;
+            i++;
+        }
+         while(count_ones--){
+            nums[i]=1;
+            i++;
+        }
+         while(count_two--){
+            nums[i]=2;
+            i++;
         }
         
     }
