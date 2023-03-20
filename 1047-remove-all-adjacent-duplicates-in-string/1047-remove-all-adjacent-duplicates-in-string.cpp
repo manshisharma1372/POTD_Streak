@@ -7,7 +7,7 @@ public:
         for(int i=0;i<s.length();i++){
             
             if(ans.length()>0){
-                                                   if(ans[ans.length()-1]==s[i]){
+               if(ans[ans.length()-1]==s[i]){
                 ans.pop_back();
             }
                  else{
@@ -31,7 +31,7 @@ public:
         
          string ans="";
         for(int i=0;i<s.length();i++){
-                                                   if(ans.length() >0 && ans[ans.length()-1]==s[i]){
+           if(ans.length() >0 && ans[ans.length()-1]==s[i]){
                 ans.pop_back();
             }
                  else
