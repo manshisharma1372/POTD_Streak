@@ -25,8 +25,8 @@ public:
             //step 3 cal difference and then cal min diff
             
            int mini_val=INT_MAX;
-            
-            for(int i=0;i<minutes.size()-1;i++)
+            int n=minutes.size();
+            for(int i=0;i<n-1;i++)
             {
                 int diff=minutes[i+1]-minutes[i];
                 
@@ -35,8 +35,12 @@ public:
            
         
         //corner case
+        //1440 is 24 hr
+        int last_diff1=(minutes[0]+1440)-minutes[n-1];
         
-        int last_diff=(minutes[0]+1440)-minutes[minutes.size()-1];
+        int last_diff2=minutes[n-1]-minutes[0];
+        
+        int last_diff=min(last_diff1,last_diff2);
         
         mini_val=min(mini_val,last_diff);
         
