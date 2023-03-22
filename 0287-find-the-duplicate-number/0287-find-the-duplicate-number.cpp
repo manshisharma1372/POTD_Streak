@@ -18,7 +18,9 @@ public:
         */
         
         
-        //visited soln
+        //visited soln tc=o(n)  sc=o(1) but array is modified
+        
+        /*
         
         int ans=-1;
         for(int i=0;i<nums.size();i++){
@@ -36,6 +38,15 @@ public:
             
         }
         return ans;
+        */
+        
+//positoning method
+        
+        while(nums[0]!=nums[nums[0]]){
+            swap(nums[0],nums[nums[0]]);
+        }
+        
+        return nums[0];
         
     }
 };
