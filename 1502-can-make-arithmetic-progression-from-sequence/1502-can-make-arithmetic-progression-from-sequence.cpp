@@ -1,11 +1,17 @@
 class Solution {
 public:
-    bool canMakeArithmeticProgression(vector<int>& arr) {
-         sort(arr.begin(), arr.end());
-    int difference = arr[1]-arr[0];
-    for(int itr = 2; itr < arr.size(); itr++){
-        if(arr[itr]-arr[itr-1] != difference) return false;
-    }
-    return true;
+    bool canMakeArithmeticProgression(vector<int>& nums) {
+        
+        sort(nums.begin(),nums.end());
+        int diff=nums[1]-nums[0];
+            for(int i=2;i<nums.size();i++){
+                int new_diff=nums[i]-nums[i-1];
+                if(new_diff!=diff){
+                    return false;
+                }
+                
+              
+            }
+          return true;
     }
 };
