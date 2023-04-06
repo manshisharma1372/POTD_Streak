@@ -1,6 +1,8 @@
 class Solution {
 public:
     
+    
+    /*
     void first_occurence(vector<int> arr,int target,vector<int> &ans){
     
     int start=0;
@@ -80,4 +82,30 @@ public:
         last_occurence(nums,target,ans);
         return ans;
     }
+    
+    */
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //using stl
+    
+    vector<int> searchRange(vector<int>& nums, int target) {
+        auto low = lower_bound(nums.begin(),nums.end(),target);
+        auto up = upper_bound(nums.begin(),nums.end(),target);
+        
+        if(low == nums.end() || *low != target)    return {-1,-1};
+        
+        int first = low - nums.begin();
+        int last = up - nums.begin()-1;
+        
+        return {first ,last};
+    }
+     
 };
