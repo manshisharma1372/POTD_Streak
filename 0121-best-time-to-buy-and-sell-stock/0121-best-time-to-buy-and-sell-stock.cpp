@@ -1,5 +1,35 @@
 class Solution {
 public:
+    
+    
+    
+    
+    
+    
+    
+    void maxProfitFinder(vector<int> &prices,int i,int &minPrice,int &maxProfit){
+        
+        //base
+        if(i==prices.size()){
+            return;
+        }
+        
+        //ek case
+        if(prices[i]<minPrice){
+            minPrice=prices[i];
+        }
+        
+        int todaysprofit=prices[i]-minPrice;
+        
+        if(todaysprofit>maxProfit){
+            maxProfit=todaysprofit;
+        }
+        
+        //RE
+        maxProfitFinder(prices,i+1,minPrice,maxProfit);
+        
+    }
+
     int maxProfit(vector<int>& prices) {
         
         
@@ -22,8 +52,10 @@ public:
         */
         
         
+        //iterative soln
+        /*
         int lsf=INT_MAX;
-       int pist = 0;
+        int pist = 0;
         int op=0;
         
         for(int i = 0; i < prices.size(); i++){
@@ -36,5 +68,26 @@ public:
             }
         }
         return op;
+        */
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //recursive soln
+        
+        
+        int minPrice=INT_MAX;
+        int maxProfit=INT_MIN;
+        maxProfitFinder(prices,0,minPrice,maxProfit);
+        return maxProfit;
     }
 };
