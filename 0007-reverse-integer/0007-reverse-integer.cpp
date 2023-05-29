@@ -1,24 +1,32 @@
 class Solution {
 public:
     int reverse(int x) {
-        int ans=0,rem=0;
-        bool isnegative=false;
-        if(x<=INT_MIN){
+        bool is_negative=false;
+        int temp=x;
+        int rev=0;
+        if(temp<=INT_MIN){
             return 0;
         }
-        if(x<0){
-            isnegative=true;
-            x=-x;
+        //to handle negative no
+        if(temp<0){
+            is_negative=true;
+            temp=-1*temp;
         }
-        while(x>0){
+        
+        while(temp!=0){
             
-            if(ans> INT_MAX/10){
+            if(rev>INT_MAX/10){
                 return 0;
             }
-            int digit=x%10;
-            ans=ans*10+digit;
-            x=x/10;
+            int last_digit=temp%10;
+            rev=rev*10+last_digit;
+            temp=temp/10;
+            
         }
-        return isnegative? -ans:ans;
+        if(is_negative==true){
+        return -1*rev;
+        }
+        return rev;
+        
     }
 };
