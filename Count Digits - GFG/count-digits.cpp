@@ -5,20 +5,21 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
 public:
+
+   
     int evenlyDivides(int N){
-        //code here
-        int x=N;
-        int rem;
-        int count=0;
-        while(x!=0){
-           rem =x%10;
+        int temp=N;
+       
+        int ans=0;
+        while(temp!=0){
+          int last_digit=temp%10;
            
-           if(rem!=0 && (N%rem)==0){
-               count++;
+           if(last_digit!=0 && (N%last_digit)==0){
+               ans++;
            }
-           x=x/10;
+           temp=temp/10;
         }
-        return count;
+        return ans;
     }
 };
 
