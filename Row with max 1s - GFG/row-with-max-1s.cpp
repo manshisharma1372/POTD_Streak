@@ -7,9 +7,8 @@ using namespace std;
 class Solution{
 public:
 	int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
-	    // code here
-	    
-	   
+	 
+	 /*
 	    int row=-1;
 	    int maxcount=0;
 	    
@@ -32,6 +31,16 @@ public:
 	        }
 	    }
 	    return row;
+	    */
+	    int res=-1;
+	    for(int j=0;j<m;j++){
+	        for(int i=0;i<n;i++){
+	            if(arr[i][j]==1){
+	                return i;
+	            }
+	        }
+	    }
+	    return res;
 	    
 	   
 	}
