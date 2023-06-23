@@ -2,9 +2,16 @@
  * @return {Function}
  */
 var createHelloWorld = function() {
+    /*
     return function(...args) {
         return "Hello World";
     }
+    */
+    
+    const ans= function res(){
+        return "Hello World";
+    }
+    return ans;
 };
 
 /**
