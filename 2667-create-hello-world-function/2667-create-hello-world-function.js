@@ -8,6 +8,13 @@ var createHelloWorld = function() {
     }
     */
     
+    /*
+    const ans= function res(){
+        return "Hello World";
+    }
+    return ans
+    */
+    
     const ans= res=> "Hello World";
     return ans;
 };
