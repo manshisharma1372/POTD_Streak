@@ -8,9 +8,7 @@ var createHelloWorld = function() {
     }
     */
     
-    const ans= function res(){
-        return "Hello World";
-    }
+    const ans= res=> "Hello World";
     return ans;
 };
 
