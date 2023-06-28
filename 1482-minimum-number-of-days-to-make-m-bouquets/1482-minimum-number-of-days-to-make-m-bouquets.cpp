@@ -37,10 +37,11 @@ public:
 	
 	int low=mini;
 	int high=maxi;
+        int ans=-1;
 	while(low<=high){
 		int mid=low+(high-low)/2;
 		if(possible(arr,mid,r,b)){
-
+            ans=mid;
 			high=mid-1;
 		}
 		else{
@@ -48,6 +49,6 @@ public:
 		}
 		
 	}
-return low;
+return ans;
     }
 };
