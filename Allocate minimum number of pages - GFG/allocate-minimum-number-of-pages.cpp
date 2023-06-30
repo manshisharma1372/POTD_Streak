@@ -12,49 +12,48 @@ class Solution
 {
     public:
     //Function to find minimum number of pages.
-    bool isPossibleSolution(int A[],int N,int M,int sol){
-        int pageSum=0;
-        int c=1;
-        for(int i=0;i<N;i++){
-            if(A[i]>sol){
-                return false;
-            }
-            
-            if(pageSum+A[i]>sol){
-                c++;
-                pageSum=A[i];
-                if(c>M){
-                    return false;
-                }
-            }
-            else{
-                pageSum+=A[i];
-            }
-        }
-        return true;
-    }
     
-    int findPages(int A[], int N, int M) 
+    int isPossible(int arr[],int pages,int n){
+    int student=1;
+    long long countPages=0;
+    for(int i=0;i<n;i++){
+        if(countPages+arr[i]<=pages){
+            countPages+=arr[i];
+        }
+        else{
+            student++;
+            countPages=arr[i];
+        }
+    }
+    return student;
+}
+
+    int findPages(int arr[], int n, int m) 
     {
         //code here
-        
-        if(M>N){
-            return -1;
+    if(m>n) return -1;
+    int start=*max_element(arr,arr+n);
+    int end=accumulate(arr,arr+n,0);
+    int ans;
+    while(start<=end){
+
+        int mid=start+(end-start)/2;
+        if(isPossible(arr,mid,n)>m){
+            start=mid+1;
+           
+           
         }
-        int start=0;
-        int end=accumulate(A,A+N,0);
-        int ans=-1;
-        while(start<=end){
-            int mid=(start+end)/2;
-            if(isPossibleSolution(A,N,M,mid)){
-                ans=mid;
-                end=mid-1;
-            }
-            else{
-                start=mid+1;
-            }
+       
+        else{
+            
+             ans=mid;
+            end=mid-1;
+          
         }
-        return ans;
+
+
+    }
+    return ans;
     }
 };
 
