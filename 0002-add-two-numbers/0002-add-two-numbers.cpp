@@ -10,83 +10,113 @@
  */
 class Solution {
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-           
-
-        int carry = 0;
-        ListNode *res = nullptr; 
-        ListNode *tail = nullptr;
-
-        while (l1 != nullptr && l2 != nullptr) {
-            int sum = l1->val + l2->val + carry;
-            int ans = sum%10; 
-            carry = sum/10; 
-
-            l1 = l1->next; 
-            l2 = l2->next;
-
-            ListNode* temp = new ListNode(ans, nullptr);
-
-            if (res == nullptr) {
-                res = temp; 
-                tail = temp;
-            } else {
-                temp->next = tail->next; 
-                tail->next = temp; 
-                tail = temp;
-            }
+    
+    ListNode* reverse(ListNode* &head){
+        
+        ListNode* prev=NULL;
+        ListNode* curr=head;
+        ListNode* forward=curr->next;
+        
+        while(curr!=NULL){
+            forward=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=forward;
         }
-
-        while (l1 != nullptr) {
-            int sum = l1->val + carry;
-            int ans = sum%10; 
-            carry = sum/10;
-
-            l1 = l1->next;
-            ListNode* temp = new ListNode(ans, nullptr);
-
-            if (res == nullptr) {
-                res = temp; 
-                tail = temp;
-            } else {
-                temp->next = tail->next; 
-                tail->next = temp; 
-                tail = temp;
-            }
+        return prev;
+        
+    }
+    ListNode* addTwoNumbers(ListNode* head1, ListNode* head2) {
+        
+        if(head1==NULL){
+        return head2;
+    }
+    
+    if(head2==NULL){
+        return head1;
+    }
+    
+   
+    
+    
+    
+    //step 2 add both ll
+    ListNode* ansHead=NULL;
+    ListNode* ansTail=NULL;
+    
+    int carry=0;
+    
+    while(head1!=NULL && head2!=NULL){
+        
+        //calc sum
+        int sum=carry+head1->val+head2->val;
+        
+        //calc digit 
+        int digit=sum%10;
+        
+        //calc carry
+        carry=sum/10;
+        
+        //creating new node for digit
+        ListNode* newnode=new ListNode(digit);
+        
+        //attach newnode in ans waali ll
+        if(ansHead==NULL){
+            //first Node 
+            
+            ansHead=newnode;
+            ansTail=newnode;
         }
-
-        while (l2 != nullptr) {
-            int sum = l2->val + carry;
-            int ans = sum%10; 
-            carry = sum/10;
-
-            l2 = l2->next;
-            ListNode* temp = new ListNode(ans, nullptr);
-
-            if (res == nullptr) {
-                res = temp; 
-                tail = temp;
-            } else {
-                temp->next = tail->next; 
-                tail->next = temp; 
-                tail = temp;
-            }
-        }
-
-        if (carry >= 1) {
-            ListNode* temp = new ListNode(carry, nullptr);
-
-            if (res == nullptr) {
-                res = temp; 
-                tail = temp;
-            } else {
-                temp->next = tail->next; 
-                tail->next = temp; 
-                tail = temp;
-            }
+        else{
+            ansTail->next=newnode;
+            ansTail=newnode;
         }
         
-        return res;
-            
+        head1=head1->next;
+        head2=head2->next;
+        
+    }
+    
+    
+    //head1 ka size bada tha head2 se
+    while(head1!=NULL){
+        
+        int sum=carry+head1->val;
+        int digit=sum%10;
+        carry=sum/10;
+        ListNode* newnode=new ListNode(digit);
+        ansTail->next=newnode;
+        ansTail=newnode;
+        head1=head1->next;
+    }
+    
+    //head2 list ki len head1 se jyada h
+     while(head2!=NULL){
+        
+        int sum=carry+head2->val;
+        int digit=sum%10;
+        carry=sum/10;
+        ListNode* newnode=new ListNode(digit);
+        ansTail->next=newnode;
+        ansTail=newnode;
+        head2=head2->next;
+    }
+    
+    //handle carry if both ll finish
+    
+    while(carry!=0){
+        int sum=carry;
+        int digit=sum%10;
+        carry=sum/10;
+        ListNode* newnode=new ListNode(digit);
+        ansTail->next=newnode;
+        ansTail=newnode;
+    }
+    
+    //reverse ans ll
+    
+    return ansHead;
+        
+        
     }
 };
