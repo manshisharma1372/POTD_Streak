@@ -1,30 +1,62 @@
 class MyQueue {
 public:
-  // Push element x to the back of queue...
+    
+    stack<int> s1,s2;
+    MyQueue() {
+        
+    }
+    
     void push(int x) {
-        in_stk.push(x);
+        s1.push(x);
     }
-	// Remove the element from the front of the queue and returns it...
+    
     int pop() {
-        peek();
-        const int val = out_stk.top();
-        out_stk.pop();
-        return val;
+        
+        int pop=-1;
+        if(!s2.empty()){
+            pop=s2.top();
+            s2.pop();
+        }
+        else{
+            while(!s1.empty()){
+                s2.push(s1.top());
+                s1.pop();
+            }
+            pop=s2.top();
+            s2.pop();
+        }
+        return pop;
+        
     }
-	// Get the front element...
+    
     int peek() {
-        if (out_stk.empty())
-        while (!in_stk.empty())
-            out_stk.push(in_stk.top()), in_stk.pop();
-        return out_stk.top();
+        
+        int front=-1;
+        if(!s2.empty()){
+            front=s2.top();
+         
+        }
+        else{
+            while(!s1.empty()){
+                s2.push(s1.top());
+                s1.pop();
+            }
+            front=s2.top();
+          
+        }
+        return front;
+        
     }
-	// Return whether the queue is empty...
+    
     bool empty() {
-        return in_stk.empty() && out_stk.empty();
+        
+        if(s1.empty() && s2.empty()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
-private:
-    stack<int> in_stk;
-    stack<int> out_stk;
 };
 
 /**
