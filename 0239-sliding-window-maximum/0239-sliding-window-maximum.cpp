@@ -1,31 +1,41 @@
 class Solution {
 public:
-    vector<int> maxSlidingWindow(vector<int>& arr, int k) {
-        multiset<int> window;
- vector<int>ans;
- 
- int j;
- for(j=0;j<k;j++){
-     window.insert(arr[j]);
- }
- 
- int max_elm= *(window.rbegin());
- ans.push_back(max_elm);
- 
- int i=0;
- while(j<arr.size()){
-     
- 
-     auto it=window.find(arr[i]);
-     window.erase(it);
-     
-     window.insert(arr[j]);
-     ans.push_back(*(window.rbegin()));
-     i++;
-     j++;
-     
-     
- }
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        deque<int> dq;
+        vector<int> ans;
+        
+        //first window of k size
+        for(int i=0;i<k;i++){
+            
+            //choteb elm remove krdo
+            while(!dq.empty() && nums[i]>=nums[dq.back()]){
+                dq.pop_back();
+            }
+            //insert at end
+            dq.push_back(i);  
+        }
+        
+        //store ans pf first window
+        ans.push_back(nums[dq.front()]);
+        
+        //remaining window
+        for(int i=k;i<nums.size();i++){
+            //out of window elm remove
+            if(!dq.empty() && i-dq.front()>=k){
+                dq.pop_front();
+            }
+            
+             while(!dq.empty() && nums[i]>=nums[dq.back()]){
+                dq.pop_back();
+            }
+            //insert
+            dq.push_back(i);
+            
+            //ans of curr window
+            ans.push_back(nums[dq.front()]);
+        }
         return ans;
+            
     }
+        
 };
