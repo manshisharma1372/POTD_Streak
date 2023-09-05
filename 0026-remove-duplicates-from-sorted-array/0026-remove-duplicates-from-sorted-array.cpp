@@ -1,20 +1,19 @@
 class Solution {
 public:
-    int removeDuplicates(vector<int>& nums) {
+    int removeDuplicates(vector<int>& arr) {
+        	vector<int> ans;
+	ans.push_back(arr[0]);
+        int n=arr.size();
+	for(int i=1;i<n;i++){
+		if(ans.back()!=arr[i]){
+			ans.push_back(arr[i]);
+		}
+	}
         
-        //two pointer approach
-        int i=0;
-        int j=i+1;
-        while(j<nums.size()){
-            
-            if(nums[j]!=nums[i]){
-                nums[i+1]=nums[j];
-                i++;
-            }
-            j++;
-            
+    arr.clear();
+        for(auto it: ans){
+            arr.push_back(it);
         }
-        return i+1;
-        
+	return arr.size();
     }
 };
