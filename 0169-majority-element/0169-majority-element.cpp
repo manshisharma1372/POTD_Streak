@@ -18,7 +18,17 @@ public:
                 ct--;
             }
         }
-        return elm;
-        
+        //check algo incase majority elm do not exist
+	
+	int ct1=0;
+	for(int i=0;i<nums.size();i++){
+		if(nums[i]==elm){
+			ct1++;
+		}
+	}
+	if(ct1>nums.size()/2){
+		return elm;
+	}
+	return -1;
     }
 };
