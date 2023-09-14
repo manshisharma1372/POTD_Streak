@@ -10,16 +10,20 @@ class Solution
        vector <int> commonElements (int a[], int b[], int c[], int n1, int n2, int n3)
         {
             //code here.
-            vector<int> v;
-            set<int> s;
             
+            vector<int> ans;
+            set<int> temp;
             int i=0;
             int j=0;
             int k=0;
+            
             while(i<n1 && j<n2 && k<n3){
                 
                 if(a[i]==b[j] && b[j]==c[k]){
-                    s.insert(a[i]);
+                    
+                    
+                  temp.insert(a[i]);
+                  
                     i++;
                     j++;
                     k++;
@@ -28,21 +32,20 @@ class Solution
                 else if(a[i]<b[j]){
                     i++;
                 }
+                
                 else if(b[j]<c[k]){
                     j++;
                 }
-                
                 else{
                     k++;
                 }
-                
             }
             
-            for(auto it:s){
-                v.push_back(it);
+            for(auto it: temp){
+                ans.push_back(it);
             }
             
-            return v;
+            return ans;
         }
 
 };
