@@ -5,9 +5,9 @@ public:
         map<string,vector<string>> m;
         
         for(auto str: strs){
-            string s=str;
-            sort(s.begin(),s.end());
-            m[s].push_back(str);
+            string curr=str;
+            sort(curr.begin(),curr.end());
+            m[curr].push_back(str);
         }
         
         vector<vector<string>> ans;
@@ -15,6 +15,7 @@ public:
         for(auto it:m){
             ans.push_back(it.second);
         }
+        
         return ans;
     }
 };
