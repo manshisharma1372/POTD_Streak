@@ -13,12 +13,13 @@ public:
         int j=0;
         while(i<n && j<last){
             
-             ans.push_back("Push");
+            
              if(target[j]==arr[i]){
+                 ans.push_back("Push");
                  j++;
             }
             else{
-               
+                ans.push_back("Push");
                 ans.push_back("Pop");
             }
             i++;
